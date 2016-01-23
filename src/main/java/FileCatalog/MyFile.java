@@ -14,41 +14,13 @@ public class MyFile {
     @Id
     private String id;
 
-    Map<String, ?> fileAttributes;
-    Boolean crawled = false;
-    Boolean hashed = false;
-    String hashCodeHex ="00";
+    Map fileAttributes;
 
-    public Boolean getCrawled() {
-        return crawled;
-    }
-
-    public void setCrawled(Boolean crawled) {
-        this.crawled = crawled;
-    }
-
-
-    public Map<String, ?> getFileAttributes() {
+    public Map getFileAttributes() {
         return fileAttributes;
     }
 
-    public void setFileAttributes(Map<String, ?> fileAttributes) {
+    public void setFileAttributes(Map fileAttributes) {
         this.fileAttributes = fileAttributes;
-    }
-
-    public Boolean getHashed() {
-        return hashed;
-    }
-
-    public void setHashed(Boolean hashed) {
-        this.hashed = hashed;
-    }
-
-    public String getHashCodeHex() {
-        return hashCodeHex;
-    }
-
-    public void setHashCodeHex(String hashCodeHex) {
-        this.hashCodeHex = hashCodeHex;
     }
 }

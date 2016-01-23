@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Map;
+
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
@@ -29,9 +31,10 @@ public class Application {
 
 	@PostConstruct
 	void logTheFiles() {
-		log.info("\n\n\n\n");
+		log.info("\n\n\n\n file repository logging code");
 		for (MyFile myFile : fileRepository.findAll()) {
-			log.info(myFile.toString());
+			String myString = myFile.fileAttributes.get("name").toString();
+			log.info("Found File : " + myString);
 		}
 		log.info("\n\n\n\n");
 	}
