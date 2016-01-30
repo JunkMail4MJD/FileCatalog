@@ -2,6 +2,12 @@ package FileCatalog;
 
 import javax.annotation.PostConstruct;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -10,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
+
 import static java.nio.file.FileVisitResult.*;
 
 
@@ -25,12 +32,19 @@ public class DatabaseLoader {
 	}
 
 
+	private static final Logger log = LoggerFactory.getLogger(DatabaseLoader.class);
+
+	private static Gson gson = new GsonBuilder().create();
+
 	public class PrintFiles extends SimpleFileVisitor<Path> {
 
 		// Print information about
 		// each type of file.
 		@Override
 		public FileVisitResult visitFile(Path file, BasicFileAttributes attr) throws java.io.IOException {
+
+			log.info("Visiting File : " + file.toString()   );
+			log.info("  File Attributes:  " + gson.toJson( attr ) );
 
 			if (attr.isSymbolicLink()) {
 				System.out.format("Symbolic link: %s ", file);
