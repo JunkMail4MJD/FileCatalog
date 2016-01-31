@@ -14,7 +14,7 @@
 			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<FileNamePattern>testAppMJD.%i.log.zip</FileNamePattern>
+			<FileNamePattern>fileCatalog.%i.log.zip</FileNamePattern>
 			<MinIndex>1</MinIndex>
 			<MaxIndex>20</MaxIndex>
 		</rollingPolicy>
