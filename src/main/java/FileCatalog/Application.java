@@ -28,13 +28,9 @@ public class Application {
 	@Autowired(required = false)
 	FileScanner fileScanner;
 
-	FileScanRepository fileScanRepository;
-
 	@Autowired
-	public Application (FileScanRepository fileScanRepository) {
-		this.fileScanRepository = fileScanRepository;
-	}
-
+	FileScanRepository fileScanRepository;
+	
 
 	@PostConstruct
 	void logTheFiles() {
