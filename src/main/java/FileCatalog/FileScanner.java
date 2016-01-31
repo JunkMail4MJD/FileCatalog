@@ -35,7 +35,7 @@ public class FileScanner {
 	private static Gson gson = new GsonBuilder().create();
 	private static final String volumeID = "1";
 	private String scanTime;
-	private int fileCount = 0;
+	private int fileCount;
 	LocalDateTime startTS;
 	LocalDateTime endTS;
 	ArrayList<FileData> theFileList = new ArrayList<FileData>();
@@ -127,7 +127,7 @@ public class FileScanner {
 			printStartTime();
 			//******************************************************
 
-			Path startingDir = Paths.get("/Users/xby099/Movies");
+			Path startingDir = Paths.get("/Volumes/Seagate Backup Plus Drive");
 			theFileVisitor visitor = new theFileVisitor();
 			Files.walkFileTree(startingDir, visitor);
 			//Files.walkFileTree( theDirectory, visitor);
@@ -201,8 +201,8 @@ public class FileScanner {
 			currentSize_BD = currentSize_BD.divide( gigaByte_BD , mc );
 
 
-			log.info("Overall Progress : " + fileCounter + " of " + totalFiles + " --- "  + fileCountProgress.toString() + " Percent" );
-			log.info("Overall Progress : " + currentSize_BD.toString() + " GB of " + fileSizeTotal.toString() + " --- " + fileSizeProgress.toString() + " Percent");
+			log.info("Overall Progress : " + fileCounter + " of " + totalFiles + " Total Files --- "  + fileCountProgress.toString() + " Percent" );
+			log.info("Overall Progress : " + currentSize_BD.toString() + " GB of " + fileSizeTotal.toString() + " Total GB --- " + fileSizeProgress.toString() + " Percent");
 			log.info("************************************************************************************************************* ");
 
 		}

@@ -30,7 +30,7 @@ public class Application {
 
 	@Autowired
 	FileScanRepository fileScanRepository;
-	
+
 
 	@PostConstruct
 	void logTheFiles() {
@@ -38,8 +38,7 @@ public class Application {
 		log.debug("---White Space\n\n\n\n file repository logging code");
 		for (FileData fileData : fileScanRepository.findAll()) {
 			fileCount ++;
-//			log.debug("File data: " + gson.toJson( fileData ) );
-
+			log.debug("File data: " + gson.toJson( fileData ) );
 		}
 		log.debug("Files in MongoDB File Scan Collection: " + fileCount );
 		log.debug("---White Space\n\n\n\n");

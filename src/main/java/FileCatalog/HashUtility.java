@@ -7,10 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.ZonedDateTime;
@@ -27,11 +24,8 @@ public class HashUtility {
 
     static final int KILO_BYTE = 1024;
     static final int MEGA_BYTE = 1024 * KILO_BYTE;
-    static final int GIGA_BYTE = 1024 * MEGA_BYTE;
     static final int CHUNK_SIZE = 250 * MEGA_BYTE;
 
-    static final String fileName = "/WS/JweReferenceIds.zip";
-    static final Path path = Paths.get( fileName );
     private static final Logger log = LoggerFactory.getLogger(FileScanner.class);
     private static Gson gson = new GsonBuilder().create();
 
@@ -54,16 +48,15 @@ public class HashUtility {
                 MessageDigest chunkMd = MessageDigest.getInstance(algorithm);
                 chunkMd.update(fileChunk, 0, bytesRead);
                 hashOfChunks.put("Chunk_" + chunkCount, DatatypeConverter.printHexBinary(chunkMd.digest()));
-//                log.debug("File Chunk Hashes:  " + gson.toJson(hashOfChunks));
+                log.debug("File Chunk Hashes:  " + gson.toJson(hashOfChunks));
                 log.info("File Chunk Progress : " + chunkCount + " of " + totalChunks);
             }
             theFile.setHashed(true);
             theFile.setHashCalculatedTime(ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME) );
             theFile.setHashOfChucks(hashOfChunks);
             theFile.setSha256Hash(DatatypeConverter.printHexBinary(fileMd.digest()));
-//            log.debug("Updated File Info:  " + gson.toJson(theFile));
+            log.debug("Updated File Info:  " + gson.toJson(theFile));
         }
-
 
 
         return theFile;
