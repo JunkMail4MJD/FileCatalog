@@ -26,10 +26,10 @@ public class Application {
 	}
 
 	@Autowired(required = false)
-	FileScanner fileScanner;
+	public FileScanner fileScanner;
 
 	@Autowired
-	FileScanRepository fileScanRepository;
+	public FileScanRepository fileScanRepository;
 
 
 	@PostConstruct

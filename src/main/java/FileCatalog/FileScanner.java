@@ -154,7 +154,7 @@ public class FileScanner {
 		int fileCounter = 0, totalFiles = theFileList.size();
 		long currentSize = 0, totalSize = 0;
 
-		MathContext mc = new MathContext( 4 );
+		MathContext mc = new MathContext( 6 );
 		BigDecimal fileCountTotal = new BigDecimal( totalFiles );
 		BigDecimal gigaByte_BD = new BigDecimal( 1024 * 1024 *1024 );
 		for ( FileData file: theFileList ) {
@@ -201,8 +201,8 @@ public class FileScanner {
 			currentSize_BD = currentSize_BD.divide( gigaByte_BD , mc );
 
 
-			log.info("Overall Progress : " + fileCounter + " of " + totalFiles + " Total Files --- "  + fileCountProgress.toString() + " Percent" );
-			log.info("Overall Progress : " + currentSize_BD.toString() + " GB of " + fileSizeTotal.toString() + " Total GB --- " + fileSizeProgress.toString() + " Percent");
+			log.info("Overall Progress : " + fileCounter + " of " + totalFiles + " Total Files --- "  + fileCountProgress.toString() + " Percent Complete" );
+			log.info("Overall Progress : " + currentSize_BD.toString() + " GB of " + fileSizeTotal.toString() + " Total GB --- " + fileSizeProgress.toString() + " Percent Complete");
 			log.info("************************************************************************************************************* ");
 
 		}
