@@ -69,7 +69,7 @@ public class FileScanner {
 
 				theFile.setSize( attr.size() );
 
-				theFile.setFileKey( attr.fileKey().toString() );
+				//theFile.setFileKey( attr.fileKey().toString() );
 				theFile.setDirectory( attr.isDirectory() );
 				theFile.setRegularFile( attr.isRegularFile() );
 				theFile.setSymbolicLink( attr.isSymbolicLink() );
@@ -127,7 +127,8 @@ public class FileScanner {
 			printStartTime();
 			//******************************************************
 
-			Path startingDir = Paths.get("/Volumes/Seagate Backup Plus Drive");
+//			Path startingDir = Paths.get("/Volumes/Seagate Backup Plus Drive");
+			Path startingDir = Paths.get("F:\\eMail");
 			theFileVisitor visitor = new theFileVisitor();
 			Files.walkFileTree(startingDir, visitor);
 			//Files.walkFileTree( theDirectory, visitor);
